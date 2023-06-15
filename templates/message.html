@@ -128,18 +128,24 @@
     <div v-for="c in comment_list" class="block">
 
       <!-- if message is from other user, display left -->
-      <p class="control" v-if="c.user_id == otherUserID">
-        <div class="left">
+        <div v-if="c.user_id == otherUserID">
+      <!-- if message is from other user, display left -->
+      <p class="control" >
+        <div class="message-body" :class="{'is-pulled-left': c.alignLeft}">
           <span class="username">{{c.text}}</span>
         </div>
-      </p>
+        </p>
+        </div>
 
+    <div v-else >
       <!-- else, message is from logged in user, display right -->
-      <p class="control" v-else>
-        <div class="right">
+      <p class="control" >
+        <div class="message-body" :class="{'is-pulled-right': c.alignRight}">
           <span class="username">{{c.text}}</span>
-        </div>
-      </p>
+        </div>   
+        
+        </p>
+    </div>
 
     </div>
   </div>
